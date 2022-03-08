@@ -1,7 +1,15 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\ForgetPasswordController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\User\DeleteUserController;
+use App\Http\Controllers\User\EditProfileController;
+use App\Http\Controllers\User\OrderListController;
+use App\Http\Controllers\User\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +22,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['XSSAttackPrevent']], function () {
+    Route::prefix('/v1/user')->name('user.')->group(function () {
+        Route::post('/create', [RegisterController::class, 'register'])->name('register');
+        Route::post('/login', [LoginController::class, 'login'])->name('login');
+        Route::post('/forget-password', [ForgetPasswordController::class, 'forgetPassword'])->name('forget_password');
+        Route::post('/reset-password-token', [ResetPasswordController::class, 'resetPassword'])->name('reset_password');
+
+        Route::group(['middleware' => ['jwt.auth', 'is_user']], function () {
+            Route::get('/', [ProfileController::class, 'profile'])->name('profile');
+            Route::delete('/', [DeleteUserController::class, 'delete'])->name('delete');
+            Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+            Route::put('/edit', [EditProfileController::class, 'update'])->name('update');
+        });
+    });
 });
