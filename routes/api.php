@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\User\EditProfileController;
 use App\Http\Controllers\User\OrderListController;
@@ -35,5 +36,18 @@ Route::group(['middleware' => ['XSSAttackPrevent']], function () {
             Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
             Route::put('/edit', [EditProfileController::class, 'update'])->name('update');
         });
+       
     });
 });
+
+ /**===== CATEGORY =====***/
+ Route::prefix('categories')
+ ->name('categories.')
+ ->controller(CategoryController::class)
+ ->group(static function () {
+     Route::get('/', 'index')->name('index');
+     Route::post('/', 'store')->name('store');
+     Route::get('/{category}', 'show')->name('show');
+     Route::put('/{category}', 'update')->name('update');
+     Route::delete('/{category}', 'destroy')->name('destroy');
+ });
