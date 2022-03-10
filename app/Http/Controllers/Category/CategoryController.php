@@ -55,7 +55,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Category $category)
@@ -69,8 +69,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Service\ServiceRequest  $request
-     * @param  \App\Models\Service  $service
+     * @param  \App\Http\Requests\Category\CreateCategoryRequest  $request
+     * @param  \App\Models\Category  $product
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(CreateCategoryRequest $request, Category $category)
@@ -95,7 +95,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)

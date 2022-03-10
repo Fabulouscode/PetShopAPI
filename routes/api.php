@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\User\EditProfileController;
 use App\Http\Controllers\User\OrderListController;
@@ -50,4 +51,16 @@ Route::group(['middleware' => ['XSSAttackPrevent']], function () {
      Route::get('/{category}', 'show')->name('show');
      Route::put('/{category}', 'update')->name('update');
      Route::delete('/{category}', 'destroy')->name('destroy');
+ });
+
+ /**===== PRODUCT =====***/
+ Route::prefix('products')
+ ->name('products.')
+ ->controller(ProductController::class)
+ ->group(static function () {
+     Route::get('/', 'index')->name('index');
+     Route::post('/', 'store')->name('store');
+     Route::get('/{product}', 'show')->name('show');
+     Route::put('/{product}', 'update')->name('update');
+     Route::delete('/{product}', 'destroy')->name('destroy');
  });
