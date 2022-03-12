@@ -17,11 +17,11 @@ class ShowCategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Category $category)
+    public function show(Category $uuid)
     {
         return $this->resourceSuccessResponse(
             trans('message.success.get', ['resource' => 'Category']),
-            new CategoryResource($category)
+            new CategoryResource($uuid)
         );
     }
 }

@@ -11,6 +11,11 @@ use App\Http\Controllers\Category\GetCategoryController;
 use App\Http\Controllers\Category\ShowCategoryController;
 use App\Http\Controllers\Category\StoreCategoryController;
 use App\Http\Controllers\Category\UpdateCategoryController;
+use App\Http\Controllers\Order\DeleteOrderController;
+use App\Http\Controllers\Order\GetOrderController;
+use App\Http\Controllers\Order\ShowOrderController;
+use App\Http\Controllers\Order\StoreOrderController;
+use App\Http\Controllers\Order\UpdateOrderController;
 use App\Http\Controllers\OrderStatus\DeleteOrderStatusController;
 use App\Http\Controllers\OrderStatus\GetOrderStatusController;
 use App\Http\Controllers\OrderStatus\ShowOrderStatusController;
@@ -59,7 +64,7 @@ Route::group(['middleware' => ['XSSAttackPrevent']],static function () {
      Route::post('/create',[StoreCategoryController::class, 'store'])->name('store');
      Route::get('/category/{uuid}',[ShowCategoryController::class, 'show'])->name('show');
      Route::put('/category/{uuid}',[UpdateCategoryController::class,'update'])->name('update');
-     Route::delete('/{category/{uuid}',[DeleteCategoryController::class, 'destroy'])->name('destroy');
+     Route::delete('/category/{uuid}',[DeleteCategoryController::class, 'destroy'])->name('destroy');
  });
  
  /**===== PRODUCT =====***/
@@ -79,3 +84,12 @@ Route::group(['middleware' => ['XSSAttackPrevent']],static function () {
      Route::put('/order-status/{uuid}', [UpdateOrderStatusController::class, 'update'])->name('update');
      Route::delete('/order-status/{uuid}', [DeleteOrderStatusController::class, 'destroy'])->name('destroy');
  });
+
+ /**===== ORDER =====***/
+ Route::prefix('v1')->name('order.')->group(static function () {
+    Route::get('/orders', [GetOrderController::class, 'index'])->name('index');
+    Route::post('/create', [StoreOrderController::class, 'store'])->name('store');
+    Route::get('/order/{uuid}', [ShowOrderController::class, 'show'])->name('show');
+    Route::put('/order/{uuid}', [UpdateOrderController::class, 'update'])->name('update');
+    Route::delete('/order/{uuid}', [DeleteOrderController::class, 'destroy'])->name('destroy');
+});

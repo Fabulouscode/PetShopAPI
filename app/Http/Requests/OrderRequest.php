@@ -23,8 +23,13 @@ class OrderRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-           //
+            return [
+                'user_id' => ['required', 'string', 'max:255', 'exists:users,id'],
+                'order_status_id' => ['required', 'string', 'max:255', 'exists:order_statuses,id'],
+                'amount' => ['required', 'numeric'],
+                'products' => ['required', 'json'],
+                'address' => ['required', 'string'],
+                'delivery_fee' => ['required', 'string'],
         ];
     }
 }

@@ -21,11 +21,11 @@ class ShowProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Product $product)
+    public function show(Product $uuid)
     {
         return $this->resourceSuccessResponse(
             trans('message.success.get', ['resource' => 'Product']),
-            new ProductResource($product)
+            new ProductResource($uuid)
         );
     }
 }

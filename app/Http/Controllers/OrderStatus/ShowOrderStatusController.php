@@ -16,11 +16,11 @@ class ShowOrderStatusController extends Controller
      * @param  \App\Models\OrderStatus  $orderStatus
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(OrderStatus $orderStatus)
+    public function show(OrderStatus $uuid)
     {
         return $this->resourceSuccessResponse(
             trans('message.success.get', ['resource' => 'OrderStatus']),
-            new OrderStatusResource($orderStatus)
+            new OrderStatusResource($uuid)
         );
     }
 }

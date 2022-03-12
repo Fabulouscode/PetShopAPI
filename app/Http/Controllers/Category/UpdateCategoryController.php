@@ -19,7 +19,7 @@ class UpdateCategoryController extends Controller
      * @param  \App\Models\Category  $product
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(CreateCategoryRequest $request, Category $category)
+    public function update(CreateCategoryRequest $request, Category $uuid)
     {
         $categoryData = array_merge(
             $request->validated(),
@@ -28,11 +28,11 @@ class UpdateCategoryController extends Controller
             ]
         );
 
-        $category->update($categoryData);
+       $updateCategory = $uuid->update($categoryData);
 
         return $this->resourceSuccessResponse(
             trans('message.success.update', ['resource' => 'Category']),
-            new CategoryResource($category)
+            new CategoryResource($updateCategory)
         );
     }
 
