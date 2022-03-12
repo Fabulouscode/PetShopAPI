@@ -13,13 +13,6 @@ class UpdateProductController extends Controller
 {
     use HasApiResponses;
     
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\Product\ProductRequest  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product = $product->update([

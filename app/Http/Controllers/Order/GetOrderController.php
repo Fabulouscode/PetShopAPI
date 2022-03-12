@@ -11,11 +11,7 @@ use Illuminate\Http\Request;
 class GetOrderController extends Controller
 {
     use HasApiResponses;
-    /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\JsonResponse
-    */
+    
    public function index()
    {
        return $this->resourceSuccessResponse(

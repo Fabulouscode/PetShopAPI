@@ -13,12 +13,7 @@ use Illuminate\Support\Str;
 class StoreOrderController extends Controller
 {
     use HasApiResponses;
-      /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Order\OrderRequest  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
+    
     public function store(OrderRequest $request)
     {
         $product = Order::create([

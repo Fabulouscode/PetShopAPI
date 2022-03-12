@@ -11,13 +11,7 @@ use App\Traits\HasApiResponses;
 class UpdateOrderStatusController extends Controller
 {
     use HasApiResponses;
-      /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\OrderStatus\CreateOrderStatusRequest  $request
-     * @param  \App\Models\OrderStatus  $orderStatus
-     * @return \Illuminate\Http\JsonResponse
-     */
+     
     public function update(CreateOrderStatusRequest $request, OrderStatus $orderStatus)
     {
        

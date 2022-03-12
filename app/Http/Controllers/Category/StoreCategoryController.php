@@ -15,12 +15,7 @@ class StoreCategoryController extends Controller
 {
     use HasApiResponses;
     
-      /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Category\CrateCategoryRequest  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
+    
     public function store(CreateCategoryRequest $request)
     {
         $categoryData = array_merge(

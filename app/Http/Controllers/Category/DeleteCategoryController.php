@@ -10,12 +10,7 @@ use App\Traits\HasApiResponses;
 class DeleteCategoryController extends Controller
 {
     use HasApiResponses;
-      /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Category $uuid)
     {
         $uuid->delete();

@@ -9,11 +9,7 @@ use App\Traits\HasApiResponses;
 class GetCategoryController extends Controller
 {
     use HasApiResponses;
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+    
     public function index()
     {
         return $this->resourceSuccessResponse(

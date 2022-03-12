@@ -10,12 +10,7 @@ use App\Traits\HasApiResponses;
 class ShowOrderStatusController extends Controller
 {
     use HasApiResponses;
-     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\OrderStatus  $orderStatus
-     * @return \Illuminate\Http\JsonResponse
-     */
+    
     public function show(OrderStatus $uuid)
     {
         return $this->resourceSuccessResponse(

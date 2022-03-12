@@ -53,6 +53,7 @@ Route::group(['middleware' => ['XSSAttackPrevent']],static function () {
             Route::delete('/', [DeleteUserController::class, 'delete'])->name('delete');
             Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
             Route::put('/edit', [EditProfileController::class, 'update'])->name('update');
+            Route::get('/orders', [OrderListController::class, 'show'])->name('order');
         });
        
     });
@@ -63,7 +64,7 @@ Route::group(['middleware' => ['XSSAttackPrevent']],static function () {
      Route::get('/categories', [GetCategoryController::class, 'index'])->name('index');
      Route::post('/create',[StoreCategoryController::class, 'store'])->name('store');
      Route::get('/category/{uuid}',[ShowCategoryController::class, 'show'])->name('show');
-     Route::put('/category/{uuid}',[UpdateCategoryController::class,'update'])->name('update');
+     Route::put('/category/{uuid}',[UpdateCategoryommiController::class,'update'])->name('update');
      Route::delete('/category/{uuid}',[DeleteCategoryController::class, 'destroy'])->name('destroy');
  });
  

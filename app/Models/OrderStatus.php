@@ -15,4 +15,9 @@ class OrderStatus extends Model
     {
         return $this->hasOne(Order::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 }
