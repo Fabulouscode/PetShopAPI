@@ -28,7 +28,7 @@ class DeleteProductController extends Controller
      *       ),
      *      @OA\Response(
      *          response=200,
-     *          description="Product deleted successfully product",
+     *          description="message.success.delete",
      *          @OA\JsonContent()
      *       ),
      *      @OA\Response(

@@ -13,7 +13,44 @@ use Illuminate\Support\Str;
 class StoreOrderController extends Controller
 {
     use HasApiResponses;
-    
+           /**
+     * @OA\Post(
+     * path="/api/v1/order/create",
+     * operationId="CreateOrder",
+     * security={{"bearer_token": {}}},
+     * tags={"Orders"},
+     * summary="Create Product",
+     * description="Create new Order",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="application/x-www-form-urlencoded",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={"user_id", "title", "price", "description", "metadata"},
+     *               @OA\Property(property="user_id", type="text"),
+     *               @OA\Property(property="order_status_id", type="text"),
+     *               @OA\Property(property="amount", type="number"),
+     *               @OA\Property(property="products", type="text"),
+     *               @OA\Property(property="address", type="text"),
+     *               @OA\Property(property="delivery_fee", type="text"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="message.success.new",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
     public function store(OrderRequest $request)
     {
         $product = Order::create([
@@ -24,9 +61,6 @@ class StoreOrderController extends Controller
             'products' => $request->products,
             "address" => $request->address,
             "delivery_fee" => $request->delivery_fee,
-            "created_at" => $request->created_at,
-            "updated_at" => $request->updated_at,
-            "shipped_at" => $request->shipped_at,
         ]);
         return $this->resourceSuccessResponse(
             trans('message.success.new', ['resource' => 'Order']),

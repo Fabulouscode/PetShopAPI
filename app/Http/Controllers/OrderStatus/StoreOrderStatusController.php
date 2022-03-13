@@ -12,7 +12,38 @@ use Illuminate\Support\Str;
 class StoreOrderStatusController extends Controller
 {
     use HasApiResponses;
-    
+           /**
+     * @OA\Post(
+     * path="/api/v1/order-status/create",
+     * operationId="CreateOrderStatus",
+     * security={{"bearer_token": {}}},
+     * tags={"Order-status"},
+     * summary="Create Product",
+     * description="Create new order status",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="application/x-www-form-urlencoded",
+     *            @OA\Schema(
+     *               type="object",    
+     *               @OA\Property(property="title", type="text"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="message.success.new",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
     public function store(CreateOrderStatusRequest $request)
     {
         $service = OrderStatus::create([

@@ -47,7 +47,7 @@ class GetProductController extends Controller
      *       ),
      *      @OA\Response(
      *          response=200,
-     *          description="Products listed successfully",
+     *          description="message.success.get",
      *          @OA\JsonContent()
      *       ),
      *      @OA\Response(

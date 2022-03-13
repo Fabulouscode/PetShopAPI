@@ -12,10 +12,10 @@ use Illuminate\Http\Request;
 class UpdateProductController extends Controller
 {
     use HasApiResponses;
-    
-    public function update(UpdateProductRequest $request, Product $product)
+   
+    public function update(UpdateProductRequest $request, Product $uuid)
     {
-        $product = $product->update([
+        $product = $uuid->update([
             'category_uuid' => $request->category_uuid,
             'title' => $request->title,
             'price' => $request->price,

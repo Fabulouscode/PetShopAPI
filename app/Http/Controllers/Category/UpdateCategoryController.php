@@ -15,7 +15,7 @@ class UpdateCategoryController extends Controller
 /**
      * @OA\Put(
      * path="/api/v1/category/{uuid}",
-     * operationId="updateCategory",
+     * operationId="updateCatgory",
      * security={{"bearer_token": {}}},
      * tags={"Categories"},
      * summary="Update product with uuid",

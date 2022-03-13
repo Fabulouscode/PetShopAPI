@@ -13,11 +13,11 @@ class ShowCategoryController extends Controller
     use HasApiResponses;
      /**
      * @OA\Get(
-     * path="/api/v1/product/{uuid}",
-     * operationId="show Product",
-     * tags={"Products"},
-     * summary="Display fetched product",
-     * description="Display fetched product",
+     * path="/api/v1/category/{uuid}",
+     * operationId="show Category",
+     * tags={"Categories"},
+     * summary="Display fetched Category",
+     * description="Display fetched Category",
      *      @OA\Parameter(
      *           name="uuid",
      *           in="path",
@@ -27,7 +27,7 @@ class ShowCategoryController extends Controller
      *       ),
      *      @OA\Response(
      *          response=200,
-     *          description="Display fetched product",
+     *          description="Display fetched category",
      *          @OA\JsonContent()
      *       ),
      *      @OA\Response(
